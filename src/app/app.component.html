@@ -1,0 +1,18 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <label>Usuario</label>
+    <input name="usuario" formControlName="usuario">
+    <div *ngIf="formGroup.get('usuario')?.hasError('required') && formGroup.get('usuario')?.touched">
+        El usuario es requerido.
+    </div> 
+    <div *ngIf="formGroup.get('usuario')?.hasError('email') && formGroup.get('usuario')?.touched">
+        El usuario debe ser un correo electrónico válido.
+    </div> <br>
+
+    <label>Contraseña</label>
+    <input name="contrasena" type="password" formControlName="contrasena">
+    <div *ngIf="formGroup.get('contrasena')?.hasError('required') && formGroup.get('contrasena')?.touched">
+        La contraseña es requerida.
+    </div> <br>
+
+    <input type="submit" value="Iniciar Sesión" [disabled]="!formGroup.valid">
+  </form>
